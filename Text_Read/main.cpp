@@ -15,6 +15,7 @@ struct Object{
   float size_wh;
   float speed;
   Color color;
+  Texture image;
 };
 
 void PlayerMove(AppEnv& env, Object& player){
@@ -33,7 +34,10 @@ void PlayerMove(AppEnv& env, Object& player){
 }
 
 void PlayerDraw(AppEnv& env, Object& player){
-  drawFillBox(player.x, player.y, player.size_wh, player.size_wh, player.color);
+  drawTextureBox(player.x, player.y, player.size_wh, player.size_wh,
+                 0, 0, player.size_wh, player.size_wh,
+                 player.image,
+                 player.color);
 }
 
 int main() {
@@ -45,9 +49,15 @@ int main() {
     fstr >> player.x >> player.y;
     fstr >> player.speed;
     fstr >> player.size_wh;
+
     int red, green, blue;
     fstr >> red >> green >> blue;
     player.color = Color(red, green, blue);
+
+    // fstr >> player.image;
+    std::string path;
+    fstr >> path;
+    player.image = Texture(path);
   }
 
   while (env.isOpen()) {
