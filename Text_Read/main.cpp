@@ -33,7 +33,7 @@ void PlayerMove(AppEnv& env, Object& player){
   }
 }
 
-void PlayerDraw(AppEnv& env, Object& player){
+void PlayerDraw(Object& player){
   drawTextureBox(player.x, player.y, player.size_wh, player.size_wh,
                  0, 0, player.size_wh, player.size_wh,
                  player.image,
@@ -45,7 +45,12 @@ int main() {
 
   Object player;
   std::ifstream fstr("res/data.txt");
-  if (fstr){
+  if (!fstr){
+    // テキストが読み込めなかった場合
+    // 正常に終了してないお。ω。
+    return -1;
+  }
+  else{
     fstr >> player.x >> player.y;
     fstr >> player.speed;
     fstr >> player.size_wh;
@@ -54,7 +59,6 @@ int main() {
     fstr >> red >> green >> blue;
     player.color = Color(red, green, blue);
 
-    // fstr >> player.image;
     std::string path;
     fstr >> path;
     player.image = Texture(path);
@@ -63,7 +67,7 @@ int main() {
   while (env.isOpen()) {
     PlayerMove(env, player);
     env.setupDraw();
-    PlayerDraw(env, player);
+    PlayerDraw(player);
 
     env.update();
   }
