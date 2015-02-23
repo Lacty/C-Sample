@@ -4,7 +4,7 @@
 
 #include "lib/defines.hpp"
 #include "lib/appEnv.hpp"
-#include "lib/random.hpp" 
+#include "lib/random.hpp"
 #include "time.h"
 
 enum Window {
@@ -30,17 +30,16 @@ Random random;
 int main() {
   AppEnv env(Window::WIDTH, Window::HEIGHT, false, false);
 
-  // タイムの使い方がわからん
-  // random.setSeed(time);
+  random.setSeed(u_int(time(nullptr)));
 
   Ball ball[BALL_MAX];
   
   for (int i = 0; i < BALL_MAX; i++){
       ball[i].point.x() = random.fromFirstToLast(-WIDTH/2, WIDTH/2);
       ball[i].point.y() = random.fromFirstToLast(-HEIGHT/2, HEIGHT/2);
-      ball[i].speed.x() = random.fromFirstToLast(0.5, 2);
-      ball[i].speed.y() = random.fromFirstToLast(0.5, 2);
-      ball[i].color = Color(random.fromFirstToLast(0, 1), random.fromFirstToLast(0, 1), random.fromFirstToLast(0, 1));
+      ball[i].speed.x() = random.fromFirstToLast(0.5f, 2.0f);
+      ball[i].speed.y() = random.fromFirstToLast(0.5f, 2.0f);
+      ball[i].color = Color(random.fromFirstToLast(0.0f, 1.0f), random.fromFirstToLast(0.0f, 1.0f), random.fromFirstToLast(0.0f, 1.0f));
   }
   
   while (env.isOpen()) {
