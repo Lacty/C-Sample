@@ -42,11 +42,11 @@ int main() {
       angle_x += 0.1;
       float x = std::sin(angle_x) * 10;
       drawTextureBox(miku.x + x, miku.y - y, 
-        miku.width, miku.height,
-        0, 0 + y,
-        miku.width, miku.height,
-        miku_image,
-        Color(1, 1, 1));
+                     miku.width, miku.height,
+                     0, 0 + y,
+                     miku.width, miku.height,
+                     miku_image,
+                     Color(1, 1, 1));
 
       y++;
     }
