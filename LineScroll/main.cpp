@@ -36,11 +36,20 @@ int main() {
     angle += 0.1;
     angle_x = std::sin(angle) * 10;
 
-    drawTextureBox(miku.x + angle_x, miku.y, miku.width, miku.height,
-                   0, 0, miku.width, miku.height,
-                   miku_image,
-                   Color(1, 1, 1));
+    int y = 0;
 
+    while (y < miku.height){
+      angle_x += 0.1;
+      float x = std::sin(angle_x) * 10;
+      drawTextureBox(miku.x + x, miku.y - y, 
+        miku.width, miku.height,
+        0, 0 + y,
+        miku.width, miku.height,
+        miku_image,
+        Color(1, 1, 1));
+
+      y++;
+    }
     env.update();
   }
 }
