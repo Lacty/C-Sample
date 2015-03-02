@@ -1,0 +1,57 @@
+今回のコードのメリットは
+同じ（コピペ）処理を避けること
+
+いままでスイッチなどでシーン管理した場合
+drawTextureBox(画像の描画用関数
+を使って、背景、プレイヤー、エネミーをそのシーンの数だけ書いていたが
+このコードでは
+
+・背景の描画
+
+として一つだけdrawTextureBoxを用意しておいて
+画像のpathを引数として与えている
+
+Titleシーンの背景画像はこの画像
+Gameシーンの背景画像はこの画像
+Resultシーンの背景画像はこの画像
+
+というように用意して
+シーンが切り替わったら
+そのシーンに対応した画像のpathを与えてあげる
+
+
+
+// コードの解説的自分用メモ
+struct Scene
+ここで
+文字列を格納する変数を宣言
+Sceneを実際に用意するのがmain関数の中
+配列にして画像のpathを所持
+
+for文の中
+elemsof(scene)　これでsceneの数を終了条件にしている
+sceneは画像のpathの数なので今回は"3"
+
+bool result = executeScene(env, scene[i]);
+これでexecuteScene関数を呼んでいる
+引数には毎度の"env"
+そして描画するシーンの背景画像のpath
+
+
+executeScene関数の中では
+Texture bg_image
+を宣言、引数には先ほど受け取ったSceneの画像のpath
+
+そのからwhileが始まる
+if (!env.isOpen()) { return false; }
+これでfalseが返ると
+mainの中にあるresultがfalseになり
+main関数にfalseが返り
+プログラムが終了する
+
+if (env.isPushButton(Mouse::LEFT)) { break; }
+クリックするとexecuteSceneから抜け出し
+
+main関数の中のfor文が次に進む
+
+～以下繰り返し処理～
