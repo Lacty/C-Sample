@@ -5,19 +5,21 @@
 
 int main()
 {
+  // vector‚Ì‰Šú‰»
+  std::vector<int> v = { 1, 2, 3, 4, 5 };
 
-  int c;
-  std::cout << "“ü—Í‚µ‚Ä‚Ë" << std::endl;
-  std::cin >> c;
-
-  std::vector<int> ary;
-  for (int i = 0; i < c; ++i){
-    ary.push_back(i);
+  // C++11‚©‚ç‚Ìfor range
+  for (auto i : v){
+    std::cout << i << std::endl;
   }
 
-  for (auto x : ary){
-    std::cout << "ary[" << x << "] = " << ary[x] << std::endl;
-  }
+  /*
+   * ‚â‚Á‚Ä‚é‚±‚Æ
+   * i = v[0]
+   * i = v[1]
+   * i = v[2]
+   * ...
+  */
 
   return 0;
 }
