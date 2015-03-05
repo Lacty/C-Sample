@@ -1,35 +1,36 @@
 
 #include <iostream>
-#include <algorithm>
+#include <vector>
 
 
 int main()
 {
-  // 1, 0 どちらが大きいか判断して、大きい方を出力
-  std::cout << "max = " << std::max(1, 0) << std::endl;
+  /* 繰り返し処理(iteration) */
+  int ary[5] = { 1, 2, 3, 4, 5 };
+  for (int i = 0; i < 5; ++i){
+    std::cout << ary[i] << std::endl;
+  }
 
-  // 1, 0 どちらが小さいか判断して、小さい方を出力
-  std::cout << "min = " << std::min(1, 0) << std::endl;
+  /* ポインタを使った繰り返し処理 */
+  for (int* it = ary; it < &ary[5]; ++it){
+    std::cout << *it << std::endl;
+  }
 
-  
-  //----------ゲームでの使用例------------//
-  enum Window{
-    WIDTH  = 200
-  };
+  /* イテレータを使った繰り返し処理 */
+  std::vector<int> v = { 1, 2, 3, 4, 5 };
+  for (std::vector<int>::iterator it = v.begin(); it != v.end(); ++it){
+    std::cout << *it << std::endl;
+  }
+  /*
+   * it < v.end()　では無いのは
+   * イテレーターが<演算子で比較できるとは限らないから
+  */
 
-  struct Player{
-    float x;
-    float speed;
-    Player() : x(205.0f), speed(5.0f){}
-  }player;
 
-  int sign = -1;
-
-  if ((player.x >=  WIDTH * 0.5f) ||
-      (player.x <= -WIDTH * 0.5f)){
-    player.speed *= sign;
-    player.x = std::max(player.x, -WIDTH * 0.5f);
-    player.x = std::min(player.x,  WIDTH * 0.5f);
+  /* 長ったらしいのでC++11のfor rangeを使う */
+  // ポインタ(*it)でなくてOK
+  for (auto it : v){
+    std::cout << it << std::endl;
   }
 
   return 0;
