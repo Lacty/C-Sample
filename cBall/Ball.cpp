@@ -2,7 +2,7 @@
 #include "Ball.h"
 
 
-cBall::cBall(const AppEnv& env) : env(env){
+cBall::cBall(AppEnv& env) : env(env){
   m_ball.isCreate = false;
 }
 
@@ -23,17 +23,23 @@ void cBall::Move(){
   m_ball.pos.y += m_ball.speed.y;
 }
 
+void cBall::Gravity(){
+  if (env.isPressKey('G')){
+    m_ball.speed.y += GRAVITY_POWER;
+  }
+}
+
 void cBall::Bound(){
-  if ((m_ball.pos.x - m_ball.radius < -Window::WIDTH * 0.5f) ||
-      (m_ball.pos.x + m_ball.radius >  Window::WIDTH * 0.5f))
+  if ((m_ball.pos.x - m_ball.radius <= -Window::WIDTH * 0.5f) ||
+      (m_ball.pos.x + m_ball.radius >=  Window::WIDTH * 0.5f))
   {
     m_ball.speed.x *= SIGN;
     m_ball.pos.x = std::max(m_ball.pos.x - m_ball.radius, -Window::WIDTH * 0.5f);
     m_ball.pos.x = std::min(m_ball.pos.x + m_ball.radius,  Window::WIDTH * 0.5f);
   }
 
-  if ((m_ball.pos.y - m_ball.radius < -Window::HEIGHT * 0.5f) ||
-      (m_ball.pos.y + m_ball.radius >  Window::HEIGHT * 0.5f))
+  if ((m_ball.pos.y - m_ball.radius <= -Window::HEIGHT * 0.5f) ||
+      (m_ball.pos.y + m_ball.radius >=  Window::HEIGHT * 0.5f))
   {
     m_ball.speed.y *= SIGN;
     m_ball.pos.y = std::max(m_ball.pos.y - m_ball.radius, -Window::HEIGHT * 0.5f);
@@ -46,6 +52,7 @@ void cBall::Update(){
     CreateBall();
   }
   Move();
+  Gravity();
   Bound();
 }
 

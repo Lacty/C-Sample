@@ -8,7 +8,7 @@
 
 class cBall{
 private:
-  const AppEnv& env;
+  AppEnv& env;
 
   struct Object{
     bool isCreate;
@@ -16,14 +16,16 @@ private:
     float  radius;
     float2 speed;
   }m_ball;
-  const int SIGN = -1;
+  const int   SIGN = -1;
+  const float GRAVITY_POWER = -0.2f;
 
   void CreateBall();
   void Move();
+  void Gravity();
   void Bound();
 
 public:
-  cBall(const AppEnv& env);
+  cBall(AppEnv& env);
 
   void Update();
   void Draw();
