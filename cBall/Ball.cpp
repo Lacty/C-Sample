@@ -4,8 +4,8 @@
 
 cBall::cBall(AppEnv& env) :
 env(env),
-pos(float2::Zero()),
-speed(float2::Zero())
+m_pos(float2::Zero()),
+m_speed(float2::Zero())
 {
   CreateBall();
 }
@@ -14,35 +14,35 @@ void cBall::CreateBall(){
   Random r;
   r.setSeed(u_int(time(nullptr)));
 
-  speed.x = r.fromFirstToLast(-4.0f, 4.0f);
-  speed.y = r.fromFirstToLast(-4.0f, 4.0f);
+  m_speed.x = r.fromFirstToLast(-4.0f, 4.0f);
+  m_speed.y = r.fromFirstToLast(-4.0f, 4.0f);
 }
 
 void cBall::Move(){
-  pos.x += speed.x;
-  pos.y += speed.y;
+  m_pos.x += m_speed.x;
+  m_pos.y += m_speed.y;
 }
 
 void cBall::Gravity(){
   if (!env.isPressKey('G'))return;
-  speed.y += GRAVITY_POWER;
+  m_speed.y += GRAVITY_POWER;
 }
 
 void cBall::Bound(){
-  if ((pos.x - RADIUS < -Window::WIDTH * 0.5f) ||
-      (pos.x + RADIUS >  Window::WIDTH * 0.5f))
+  if ((m_pos.x - RADIUS < -Window::WIDTH * 0.5f) ||
+      (m_pos.x + RADIUS >  Window::WIDTH * 0.5f))
   {
-    speed.x *= -1;
-    pos.x = std::max(pos.x, -Window::WIDTH * 0.5f);
-    pos.x = std::min(pos.x,  Window::WIDTH * 0.5f);
+    m_speed.x *= -1;
+    m_pos.x = std::max(m_pos.x, -Window::WIDTH * 0.5f);
+    m_pos.x = std::min(m_pos.x,  Window::WIDTH * 0.5f);
   }
 
-  if ((pos.y - RADIUS < -Window::HEIGHT * 0.5f) ||
-      (pos.y + RADIUS >  Window::HEIGHT * 0.5f))
+  if ((m_pos.y - RADIUS < -Window::HEIGHT * 0.5f) ||
+      (m_pos.y + RADIUS >  Window::HEIGHT * 0.5f))
   {
-    speed.y *= -1;
-    pos.y = std::max(pos.y, -Window::HEIGHT * 0.5f);
-    pos.y = std::min(pos.y,  Window::HEIGHT * 0.5f);
+    m_speed.y *= -1;
+    m_pos.y = std::max(m_pos.y, -Window::HEIGHT * 0.5f);
+    m_pos.y = std::min(m_pos.y,  Window::HEIGHT * 0.5f);
   }
 }
 
@@ -53,7 +53,7 @@ void cBall::Update(){
 }
 
 void cBall::Draw(){
-  drawFillCircle(pos.x, pos.y,
+  drawFillCircle(m_pos.x, m_pos.y,
                  RADIUS, RADIUS,
                  BALL_DIVISION,
                  Color(1, 1, 1));

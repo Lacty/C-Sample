@@ -9,8 +9,8 @@ class cBall{
 private:
   AppEnv& env;
 
-  float2 pos;
-  float2 speed;
+  float2 m_pos;
+  float2 m_speed;
 
   const float GRAVITY_POWER = -0.2f;
   enum BallParameter{
