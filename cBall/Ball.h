@@ -10,7 +10,6 @@ class cBall{
 private:
   AppEnv& env;
 
-  bool isCreate;
   float2 pos;
   float2 speed;
 
