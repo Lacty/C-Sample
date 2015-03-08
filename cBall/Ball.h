@@ -10,14 +10,15 @@ class cBall{
 private:
   AppEnv& env;
 
-  struct Object{
-    bool isCreate;
-    float2 pos;
-    float  radius;
-    float2 speed;
-  }m_ball;
-  const int   SIGN = -1;
+  bool isCreate;
+  float2 pos;
+  float2 speed;
+
   const float GRAVITY_POWER = -0.2f;
+  enum BallParameter{
+    RADIUS        = 10,
+    BALL_DIVISION = 100
+  };
 
   void CreateBall();
   void Move();

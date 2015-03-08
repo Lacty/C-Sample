@@ -2,64 +2,60 @@
 #include "Ball.h"
 
 
-cBall::cBall(AppEnv& env) : env(env){
-  m_ball.isCreate = false;
+cBall::cBall(AppEnv& env) :
+env(env),
+pos(float2::Zero()),
+speed(float2::Zero())
+{
+  CreateBall();
 }
 
 void cBall::CreateBall(){
-  const float RADIUS = 10;
   Random r;
-  r.setSeed(unsigned int(time(nullptr))); // u_int使わず行けるか確認
+  r.setSeed(u_int(time(nullptr)));
 
-  m_ball.pos = float2();
-  m_ball.radius = RADIUS;
-  m_ball.speed.x = r.fromFirstToLast(-4.0f, 4.0f);
-  m_ball.speed.y = r.fromFirstToLast(-4.0f, 4.0f);
-  m_ball.isCreate = true;
+  speed.x = r.fromFirstToLast(-4.0f, 4.0f);
+  speed.y = r.fromFirstToLast(-4.0f, 4.0f);
+  isCreate = true;
 }
 
 void cBall::Move(){
-  m_ball.pos.x += m_ball.speed.x;
-  m_ball.pos.y += m_ball.speed.y;
+  pos.x += speed.x;
+  pos.y += speed.y;
 }
 
 void cBall::Gravity(){
-  if (env.isPressKey('G')){
-    m_ball.speed.y += GRAVITY_POWER;
-  }
+  if (!env.isPressKey('G'))return;
+  speed.y += GRAVITY_POWER;
 }
 
 void cBall::Bound(){
-  if ((m_ball.pos.x - m_ball.radius <= -Window::WIDTH * 0.5f) ||
-      (m_ball.pos.x + m_ball.radius >=  Window::WIDTH * 0.5f))
+  if ((pos.x - RADIUS < -Window::WIDTH * 0.5f) ||
+      (pos.x + RADIUS >  Window::WIDTH * 0.5f))
   {
-    m_ball.speed.x *= SIGN;
-    m_ball.pos.x = std::max(m_ball.pos.x - m_ball.radius, -Window::WIDTH * 0.5f);
-    m_ball.pos.x = std::min(m_ball.pos.x + m_ball.radius,  Window::WIDTH * 0.5f);
+    speed.x *= -1;
+    pos.x = std::max(pos.x, -Window::WIDTH * 0.5f);
+    pos.x = std::min(pos.x,  Window::WIDTH * 0.5f);
   }
 
-  if ((m_ball.pos.y - m_ball.radius <= -Window::HEIGHT * 0.5f) ||
-      (m_ball.pos.y + m_ball.radius >=  Window::HEIGHT * 0.5f))
+  if ((pos.y - RADIUS < -Window::HEIGHT * 0.5f) ||
+      (pos.y + RADIUS >  Window::HEIGHT * 0.5f))
   {
-    m_ball.speed.y *= SIGN;
-    m_ball.pos.y = std::max(m_ball.pos.y - m_ball.radius, -Window::HEIGHT * 0.5f);
-    m_ball.pos.y = std::min(m_ball.pos.y + m_ball.radius,  Window::HEIGHT * 0.5f);
+    speed.y *= -1;
+    pos.y = std::max(pos.y, -Window::HEIGHT * 0.5f);
+    pos.y = std::min(pos.y,  Window::HEIGHT * 0.5f);
   }
 }
 
 void cBall::Update(){
-  if (!m_ball.isCreate){
-    CreateBall();
-  }
   Move();
   Gravity();
   Bound();
 }
 
 void cBall::Draw(){
-  static const int BALL_DIVISION = 100;
-  drawFillCircle(m_ball.pos.x, m_ball.pos.y,
-                 m_ball.radius, m_ball.radius,
+  drawFillCircle(pos.x, pos.y,
+                 RADIUS, RADIUS,
                  BALL_DIVISION,
                  Color(1, 1, 1));
 }
