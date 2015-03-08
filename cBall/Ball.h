@@ -3,7 +3,6 @@
 #include "common.h"
 #include "lib/random.hpp"
 #include <ctime>
-#include <algorithm>
 
 
 class cBall{
