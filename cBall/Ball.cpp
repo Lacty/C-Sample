@@ -16,7 +16,6 @@ void cBall::CreateBall(){
 
   speed.x = r.fromFirstToLast(-4.0f, 4.0f);
   speed.y = r.fromFirstToLast(-4.0f, 4.0f);
-  isCreate = true;
 }
 
 void cBall::Move(){
