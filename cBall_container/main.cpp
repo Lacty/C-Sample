@@ -13,13 +13,16 @@ int main() {
   Random random;
   random.setSeed(u_int(time(nullptr)));
 
-  float2 mouse_pos = float2(env.mousePosition().x(),
-                            env.mousePosition().y());
+  float2 mouse_pos = float2::Zero();
 
   std::vector<cBall> balls;
+  enum { BALL_MAX = 10 };
 
   while (env.isOpen()) {
-    if (env.isPushButton(Mouse::LEFT)){
+    mouse_pos = float2(env.mousePosition().x(),
+                       env.mousePosition().y());
+
+    if (env.isPushButton(Mouse::LEFT) && balls.size() < BALL_MAX){
       balls.push_back(cBall(random, mouse_pos));
     }
     for (auto& it : balls){
