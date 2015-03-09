@@ -4,3 +4,9 @@
 3_08 4:33
 name : float2
 tips : floatŒ^‚ğ2‚Â‚ÂŒ^
+
+3_10 8:35
+name : float2
+tips : Šg’£
+Šg’£1 : Vec2f‚Å‚Ì‰Šú‰»‚É‘Î‰
+Šg’£2 : Vec2f‚Æ‚Ì‘«‚µZ‚É‘Î‰
