@@ -19,8 +19,7 @@ int main() {
   enum { BALL_MAX = 10 };
 
   while (env.isOpen()) {
-    mouse_pos = float2(env.mousePosition().x(),
-                       env.mousePosition().y());
+    mouse_pos = env.mousePosition();
 
     if (env.isPushButton(Mouse::LEFT) && balls.size() < BALL_MAX){
       balls.push_back(cBall(random, mouse_pos));
