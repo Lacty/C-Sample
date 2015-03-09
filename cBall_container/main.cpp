@@ -25,6 +25,7 @@ int main() {
     if (env.isPushButton(Mouse::LEFT) && balls.size() < BALL_MAX){
       balls.push_back(cBall(random, mouse_pos));
     }
+
     for (auto& it : balls){
       it.Update();
 
@@ -32,6 +33,7 @@ int main() {
         it.Gravity();
       }
     }
+
     env.setupDraw();
 
     for (auto& it : balls){
