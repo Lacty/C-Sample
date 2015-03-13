@@ -17,25 +17,34 @@ int _tmain(int argc, _TCHAR* argv[])
   va.push_back(2); // 2番目に "2" を追加
 
 
-  //---------アクセス方法---------//
+  //--------イテレータ--------//
+  // イテレータの宣言
+  std::vector<int>::iterator it;
+  for (it = va.begin(); it != va.end(); ++it){
+    std::cout << *it << std::endl;
+  }
 
-  // operator[i]
-  // i番目の要素にアクセスできる
-  std::cout << va[0] << std::endl;
+  // it = va.begin()
+  /* vaの先頭を指すイテレータをitに代入
+   * この時点でitはvaの先頭要素を指している
+  */
 
-  // at(i)
-  // i番目の要素にアクセスできる
-  // oparator[]と違うのはこの配列内のみアクセスするというところ
-  // 安全にアクセスできる
-  std::cout << va.at(0) << std::endl;
-  
-  // front
-  // 配列の最初の要素にアクセスできる
-  std::cout << va.front() << std::endl;
+  // it != va.end()
+  /* 終了条件
+   * va.end()はvaの最終要素のイテレータを返す
+   * "<"ではなく"!="なのはイテレータが必ずしも比較できないから
+   * vectorはできるらしい
+  */
 
-  // back
-  // 配列の最終要素にアクセスできる
-  std::cout << va.back() << std::endl;
+  // ++it
+  /* イテレータを進める
+  */
+
+  // *it
+  /* 要素にアクセス
+   * itではイテレータそのものを指すことになるcoutではエラー
+   * ポインタ
+  */
 
 	return 0;
 }
