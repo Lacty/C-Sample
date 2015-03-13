@@ -6,45 +6,57 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-  // int型のvector　vaを宣言
-  std::vector<int> va;
-  
-  // push_back
-  /* 値をベクタの末尾に追加
+  std::vector<int> va = { 1, 2 ,3 };
+
+  //========size()========//
+  /* 配列の要素数を吐き出す
   */
-  va.push_back(0); // 0番目に "0" を追加
-  va.push_back(1); // 1番目に "1" を追加
-  va.push_back(2); // 2番目に "2" を追加
+  std::cout << va.size() << std::endl;
 
+  //========max_size()========//
+  /* この配列が持てる最大要素数
+  */
+  std::cout << va.max_size() << std::endl;
 
-  //--------イテレータ--------//
-  // イテレータの宣言
-  std::vector<int>::iterator it;
-  for (it = va.begin(); it != va.end(); ++it){
-    std::cout << *it << std::endl;
+  //========empty()========//
+  /* 配列が空ならtrueを返す
+  */
+  if (va.empty()){
+    std::cout << "配列は空です。" << std::endl;
+  }
+  else{
+    std::cout << "配列に要素があります。" << std::endl;
   }
 
-  // it = va.begin()
-  /* vaの先頭を指すイテレータをitに代入
-   * この時点でitはvaの先頭要素を指している
+  //========capacity()========//
+  /* 記憶領域を確保しなおす(push_backなど)必要なしに
+   * 確保できる要素数を吐き出す
   */
+  std::cout << va.capacity() << std::endl;
 
-  // it != va.end()
-  /* 終了条件
-   * va.end()はvaの最終要素のイテレータを返す
-   * "<"ではなく"!="なのはイテレータが必ずしも比較できないから
-   * vectorはできるらしい
+  //========resize()========//
+  /* 配列が持てる最大要素数を変更する
   */
+  va.resize(10);
+  // capacity()で確認
+  std::cout << va.capacity() << std::endl;
 
-  // ++it
-  /* イテレータを進める
-  */
 
-  // *it
-  /* 要素にアクセス
-   * itではイテレータそのものを指すことになるcoutではエラー
-   * ポインタ
+  //========shrink_to_fit()========//
+  /* C++11から追加されたもの
+   * 最大要素数を指定して宣言した場合など
+   * いらない記憶領域を解放することができる
   */
+  std::vector<int> vb(100);
+  std::cout << vb.capacity() << " " << vb.size() << std::endl;
+  vb.resize(5);
+  std::cout << vb.capacity() << " " << vb.size() << std::endl;
+  vb.shrink_to_fit();
+  std::cout << vb.capacity() << " " << vb.size() << std::endl;
+
+
+  // 出力結果
+  // "Possible output1.png"
 
 	return 0;
 }
