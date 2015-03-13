@@ -6,25 +6,36 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-  std::vector<int> ary;
+  // int型のvector　vaを宣言
+  std::vector<int> va;
+  
+  // push_back
+  /* 値をベクタの末尾に追加
+  */
+  va.push_back(0); // 0番目に "0" を追加
+  va.push_back(1); // 1番目に "1" を追加
+  va.push_back(2); // 2番目に "2" を追加
 
 
-  for (int i = 0; i < 2; ++i){
-    // .push_back("中に入れるもの");
-    ary.push_back(2);
-  }
+  //---------アクセス方法---------//
 
-  // 配列の要素数
-  std::cout << ary.size() << std::endl;
+  // operator[i]
+  // i番目の要素にアクセスできる
+  std::cout << va[0] << std::endl;
 
-  // 配列０番目の中身
-  std::cout << ary[0] << std::endl;
+  // at(i)
+  // i番目の要素にアクセスできる
+  // oparator[]と違うのはこの配列内のみアクセスするというところ
+  // 安全にアクセスできる
+  std::cout << va.at(0) << std::endl;
+  
+  // front
+  // 配列の最初の要素にアクセスできる
+  std::cout << va.front() << std::endl;
 
-  // warning C4018: '<' : signed/unsigned mismatch
-  // .size()はunsignedで返るのに比較対象"int i"がsignedですよって警告
-  for (int i = 0; i < ary.size(); ++i){
-    std::cout << ary[i] << std::endl;
-  }
+  // back
+  // 配列の最終要素にアクセスできる
+  std::cout << va.back() << std::endl;
 
 	return 0;
 }
