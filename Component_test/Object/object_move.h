@@ -13,4 +13,6 @@ public:
   cObjectMove(cObject*);
   ~cObjectMove();
 
+  void update();
+  void getPos();
 };

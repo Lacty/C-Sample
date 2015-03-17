@@ -15,4 +15,8 @@ public:
 
   void componentInit();
 
+  bool isAtk();
+
+  void update();
+  void draw();
 };

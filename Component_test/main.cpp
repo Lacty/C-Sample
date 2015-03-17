@@ -8,4 +8,13 @@ int main(){
 
   obj.componentInit();
   
+  obj.draw();
+
+  obj.update();
+
+  obj.draw();
+  
+  //
+  // TomさんのComponent_Test参照
+  // 出力結果は同フォルダのPossible output参照
 }

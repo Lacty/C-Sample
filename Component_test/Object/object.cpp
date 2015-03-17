@@ -25,3 +25,32 @@ void cObject::componentInit(){
   if (m_move == nullptr)
     m_move = new cObjectMove(this);
 }
+
+bool cObject::isAtk(){
+  return m_atk->isAtk();
+}
+
+void cObject::update(){
+  std::cout << "キャラクタ行動開始" << std::endl;
+
+  m_move->update();
+  std::cout << std::endl;
+
+  m_atk->update();
+  std::cout << std::endl;
+
+  m_atk->powUp();
+  std::cout << std::endl;
+
+  m_atk->update();
+  std::cout << std::endl;
+
+  m_move->update();
+  std::cout << std::endl;
+}
+
+void cObject::draw(){
+  std::cout << "キャラクタの描画" << std::endl;
+  m_move->getPos();
+  std::cout << std::endl;
+}
