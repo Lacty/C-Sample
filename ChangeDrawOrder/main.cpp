@@ -31,7 +31,7 @@ private:
   Object front_obj;
   Object back_obj;
 
-  void swipe(){
+  void swap(){
     Object temp = front_obj;
     front_obj = back_obj;
     back_obj = temp;
@@ -43,7 +43,7 @@ public:
 
   void update(){
     if (!m_env.isPushButton(Mouse::LEFT))return;
-    swipe();
+    swap();
   }
   void draw(){
     drawFillCircle(back_obj.m_pos.x, back_obj.m_pos.y,
