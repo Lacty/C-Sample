@@ -6,11 +6,8 @@
 class cScene {
 public:
 
+  cScene() = default;
+
   virtual void update() = 0;
   virtual void draw()   = 0;
-
-protected:
-
-  cScene(const int num) : m_scene_num(num){}
-  int m_scene_num;
 };
