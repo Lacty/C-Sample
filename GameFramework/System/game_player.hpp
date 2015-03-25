@@ -10,7 +10,8 @@ public:
   cGamePlayer() = default;
 
   void run(){
-    
+    m_scene.update();
+    m_scene.draw();
   }
 
 
