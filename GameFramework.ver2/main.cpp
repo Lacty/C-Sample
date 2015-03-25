@@ -1,12 +1,10 @@
 ﻿
-#include "common.hpp"
 #include "System/environment.h"
+#include "System/game_player.hpp"
 
 
 int main() {
-  while (env::get()->isOpen()) {
-    env::get()->begin();
-
-    env::get()->end();
-  }
+  env::get();
+  cGamePlayer game;
+  game.run();
 }
