@@ -7,7 +7,7 @@
 class cSceneManager {
 public:
 
-  cSceneManager();
+  cSceneManager() = default;
 
   void update();
   void draw();

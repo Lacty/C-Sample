@@ -2,9 +2,6 @@
 #include "scene_manager.h"
 
 
-cSceneManager::cSceneManager(){}
-
-
 void cSceneManager::update(){
   m_title.update();
 
