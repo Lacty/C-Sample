@@ -10,7 +10,7 @@ protected:
 
   cScene(cSceneManager*);
 
-  cSceneManager * m_manager;
+  cSceneManager* m_manager;
 
 
 public:
