@@ -1,21 +1,20 @@
 
 #pragma once
 #include "common.h"
-#include "../Scene/title.h"
+#include "../System/scene_manager.h"
 
 
 class cGamePlayer {
 public:
 
-  cGamePlayer() {}
+  cGamePlayer() = default;
 
   void run(){
-    m_title.update();
-    m_title.draw();
+    
   }
 
 
 private:
 
-  cTitle m_title;
+  cSceneManager m_scene;
 };
