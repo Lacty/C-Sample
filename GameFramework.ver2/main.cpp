@@ -1,13 +1,12 @@
 ﻿
 #include "common.hpp"
+#include "System/environment.h"
 
 
 int main() {
-  AppEnv env(WIDTH, HEIGHT);
+  while (env::get()->isOpen()) {
+    env::get()->begin();
 
-  while (env.isOpen()) {
-    env.begin();
-
-    env.end();
+    env::get()->end();
   }
 }
