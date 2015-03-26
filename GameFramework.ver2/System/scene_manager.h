@@ -3,6 +3,7 @@
 #include "environment.h"
 #include "../Scene/scene.h"
 #include "../Scene/title.h"
+#include "../Scene/game_scene.h"
 #include <memory>
 
 
