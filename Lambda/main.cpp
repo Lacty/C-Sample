@@ -2,32 +2,36 @@
 #include <iostream>
 
 
+// 引数に与えた数値が2倍になって帰ってくる関数
+int hoge(int& val){
+  return val * 2;
+}
+
 int main(){
   // ラムダ式の構造
   // [キャプチャ](仮引数)->戻り値{複合分文};
 
-  // ():仮引数
-  // 省略可
-
-  // ->:戻り値
-  // 省略可
+  // ラムダ式hoge関数
+  auto piyo = [&](int val)->int{
+    return val * 2;
+  };
 
   {
-    // そのまま書いた場合
-    auto a = []()->int{ return 10; };
-    std::cout << a() << std::endl;
-
+    // hoge
+    int val = 2;
+    std::cout << hoge(val) << std::endl;
+    
     // 出力結果
-    // 10
+    // 4
   }
 
   {
-    // 省略して書いた場合
-    auto a = []{ return 10; };
-    std::cout << a() << std::endl;
+    // piyo
+    int val = 3;
+    std::cout << piyo(val) << std::endl;
 
     // 出力結果
-    // 10
+    // 6
   }
 
   return 0;
