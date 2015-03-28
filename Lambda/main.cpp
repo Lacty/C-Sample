@@ -12,7 +12,7 @@ int main(){
   // [キャプチャ](仮引数)->戻り値{複合分文};
 
   // ラムダ式hoge関数
-  auto piyo = [&](int val)->int{
+  auto piyo = [](int& val)->int{
     return val * 2;
   };
 
