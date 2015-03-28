@@ -28,9 +28,9 @@ int main(){
     cHoge* hoge = new cHoge;
     auto piyo = [&]{
       return hoge->getInstance();
-    };
+    }();
 
-    std::cout << piyo() << std::endl;
+    std::cout << piyo << std::endl;
 
     // o—ÍŒ‹‰Ê
     // 10
