@@ -2,54 +2,43 @@
 #include <iostream>
 
 
+class cHoge{
+public:
+
+  cHoge() :
+  m_x(10) {}
+
+  int getInstance(){
+    return m_x;
+  }
+
+
+private:
+
+  int m_x;
+};
+
 int main(){
   // ラムダ式の構造
   // [キャプチャ](仮引数)->戻り値{複合分文};
 
-  // [=]:コピーキャプチャ
-  
-  {
-    int cpy = 5;
-    auto hoge = [=](int val)->int{
-      return cpy + val;
-    };
-    std::cout << hoge(10) << std::endl;
-  }
-
-  /*{
-    int cpy = 5;
-    auto hoge = [](int val)->int{
-
-      return cpy + val;
-
-      // cpyとはなんぞや？
-      // と怒られる
-    };
-    std::cout << hoge(10) << std::endl;
-  }*/
+  // [&]:参照キャプチャ
 
   {
-    // 個別に指定することも可能
-    int cpy1 = 5;
-    int cpy2 = 20;
-    auto hoge = [cpy1, cpy2](int val)->int{
-      return cpy1 + cpy2 + val;
+    cHoge* hoge = new cHoge;
+    auto piyo = [&]{
+      return hoge->getInstance();
     };
-    std::cout << hoge(10) << std::endl;
+
+    std::cout << piyo() << std::endl;
+
+    // 出力結果
+    // 10
+
+    // 何したいんだ俺は。ω。
+    // いや無駄ではないか・・・？
+    // piyo呼び出せばhoge->getInstanceがよべるし・・・？
   }
-
-  /*{
-    int cpy1 = 5;
-    int cpy2 = 20;
-    auto hoge = [cpy1](int val)->int{
-
-      return cpy1 + cpy2 + val;
-      
-      // cpy2とはなんぞや？
-      // と怒られる
-    };
-    std::cout << hoge(10) << std::endl;
-  }*/
 
   return 0;
 }
