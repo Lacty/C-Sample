@@ -8,16 +8,17 @@ public:
 
   cScoreRandom(cScore*);
 
-  void  initRandom();
-  short getRandom();
+  short get();
 
 
 private:
+
+  void  init();
 
   enum RandomNum {
     FIRST = 0,
     LAST  = 50
   };
 
-  Random random;
+  Random m_random;
 };

@@ -3,13 +3,16 @@
 
 
 cScoreRandom::cScoreRandom(cScore* obj) :
-cObjectInterface(obj) {}
-
-
-void cScoreRandom::initRandom() {
-  random.setSeed(u_int(time(nullptr)));
+cObjectInterface(obj)
+{
+  init();
 }
 
-short cScoreRandom::getRandom() {
-  return random(FIRST, LAST);
+
+void cScoreRandom::init() {
+  m_random.setSeed(u_int(time(nullptr)));
+}
+
+short cScoreRandom::get() {
+  return m_random(FIRST, LAST);
 }

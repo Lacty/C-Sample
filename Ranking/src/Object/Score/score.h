@@ -1,12 +1,14 @@
 
 #pragma once
-#include "score_random.h"
+#include <memory>
 
+
+class cScoreRandom;
 
 class cScore {
 public:
 
-  cScore();
+  cScore() = default;
 
   void init();
 
@@ -16,5 +18,5 @@ public:
 
 private:
 
-
+  std::shared_ptr<cScoreRandom> m_random;
 };
