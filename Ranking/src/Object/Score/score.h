@@ -4,6 +4,7 @@
 
 
 class cScoreRandom;
+class cMyScore;
 
 class cScore {
 public:
@@ -15,8 +16,11 @@ public:
   void update();
   void draw();
 
+  short getRandom();
+
 
 private:
 
   std::shared_ptr<cScoreRandom> m_random;
+  std::shared_ptr<cMyScore>     m_my_score;
 };

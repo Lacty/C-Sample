@@ -1,4 +1,5 @@
 
+#pragma once
 #include "../object_interface.h"
 #include "../../common.h"
 
