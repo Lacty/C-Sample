@@ -1,23 +1,23 @@
 
-#include "../common.h"
+#include "env.h"
+#include "../Object/Score/score.h"
+#include "../Object/Interface/interface.h"
 
 
 class cRankPlayer {
 public:
 
-  cRankPlayer(AppEnv& env) :
-  m_env(env) {}
+  cRankPlayer() = default;
 
   void run(){
-    while (m_env.isOpen()){
-      m_env.begin();
+    while (cEnv::get()->isOpen()){
+      cEnv::get()->begin();
 
 
-      m_env.end();
+      cEnv::get()->end();
     }
   }
 
 private:
 
-  AppEnv& m_env;
 };
