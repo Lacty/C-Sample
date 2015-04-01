@@ -12,7 +12,7 @@ void cDispScore::draw(const short& score, int Pos_x, int Pos_y) {
   short ten_point = score / 10;
   int pos_x = Pos_x;
   int pos_y = Pos_y;
-  for (int count = 0; count < ten_point; ++count){
+  for (int count = 0; count < ten_point; ++count) {
     drawTextureBox(pos_x, pos_y, L_POINT_SIZE, L_POINT_SIZE,
       0, 0, SPRITE_SIZE, SPRITE_SIZE,
       large_img,
@@ -26,7 +26,7 @@ void cDispScore::draw(const short& score, int Pos_x, int Pos_y) {
   // large‚Æsmall‚Ì‹æŠÔ‚ðŠJ‚¯‚é
   if (ten_point != 0) pos_x += S_RANE_X / 2;
 
-  for (int count = 0; count < one_point; ++count){
+  for (int count = 0; count < one_point; ++count) {
     drawTextureBox(pos_x, pos_y, S_POINT_SIZE, S_POINT_SIZE,
       0, 0, SPRITE_SIZE, SPRITE_SIZE,
       small_img,

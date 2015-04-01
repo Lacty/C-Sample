@@ -1,6 +1,7 @@
 
 #include "score_my_score.h"
 #include "score.h"
+#include "../../System/env.h"
 #include <fstream>
 
 
@@ -17,9 +18,18 @@ void cMyScore::loadScore() {
 }
 
 void cMyScore::update() {
-
+  if (!isUpdate()) return;
+  m_point = m_score->getRandom();
 }
 
 void cMyScore::draw() {
   m_score->dispScore(m_point, POS_X, POS_Y);
+}
+
+short cMyScore::getMyScore() const {
+  return m_point;
+}
+
+bool cMyScore::isUpdate() {
+  return cEnv::get()->isPushButton(LEFT);
 }

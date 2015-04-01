@@ -1,11 +1,13 @@
 
 #pragma once
+#include <vector>
 #include <memory>
 
 
+class cDispScore;
 class cScoreRandom;
 class cMyScore;
-class cDispScore;
+class cRanking;
 
 class cScore {
 public:
@@ -17,9 +19,13 @@ public:
   void update();
   void draw();
 
-  short getRandom();
+  short getRandom() const;
+  short getMyScore() const;
+  std::vector<short> getRankScore() const;
+  int getRankingMax() const;
+  bool  isUpdate() const;
 
-  void dispScore(const short& score, int, int);
+  void dispScore(const short& score, int, int) const;
 
 
 private:
@@ -27,4 +33,5 @@ private:
   std::shared_ptr<cDispScore>   m_disp;
   std::shared_ptr<cScoreRandom> m_random;
   std::shared_ptr<cMyScore>     m_my_score;
+  std::shared_ptr<cRanking>     m_ranking;
 };

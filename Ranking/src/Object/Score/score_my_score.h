@@ -11,6 +11,9 @@ public:
   void update();
   void draw();
 
+  short getMyScore() const;
+  bool isUpdate();
+
 
 private:
 

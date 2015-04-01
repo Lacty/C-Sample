@@ -17,7 +17,7 @@ private:
   void  init();
 
   enum RandomNum {
-    FIRST = 0,
+    FIRST = 1,
     LAST  = 50
   };
 
