@@ -13,13 +13,12 @@ void cScore::init() {
 }
 
 void cScore::update() {
-
+  
 }
 
 void cScore::draw() {
-  drawBox(0, 0, 10, 10, 2, Color(1, 1, 1));
+  m_my_score->draw();
 }
-
 
 short cScore::getRandom() {
   return m_random->get();

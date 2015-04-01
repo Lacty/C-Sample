@@ -3,9 +3,6 @@
 #include "interface_score.h"
 
 
-cInterface::cInterface() {}
-
-
 void cInterface::init() {
   if (m_score == nullptr)
     m_score = std::make_shared<cInterfaceScore>(this);

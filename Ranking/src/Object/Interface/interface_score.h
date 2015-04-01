@@ -15,8 +15,8 @@ public:
 private:
 
   enum InitState {
-    POS_X  = 0,
-    POS_Y  = 0,
+    POS_X  = -240,
+    POS_Y  = 160,
     SIZE_W = 128,
     SIZE_H = 64
   };

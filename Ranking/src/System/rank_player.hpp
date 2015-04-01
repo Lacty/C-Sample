@@ -11,6 +11,7 @@ public:
 
   void run(){
     m_score.init();
+    m_interface.init();
 
     while (cEnv::get()->isOpen()){
 

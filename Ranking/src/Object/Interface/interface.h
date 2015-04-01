@@ -8,7 +8,7 @@ class cInterfaceScore;
 class cInterface {
 public:
 
-  cInterface();
+  cInterface() = default;
 
   void init();
 

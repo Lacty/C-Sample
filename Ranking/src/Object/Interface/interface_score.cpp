@@ -16,6 +16,5 @@ height(SIZE_H)
 void cInterfaceScore::draw() {
   drawTextureBox(x, y, width, height,
                  0, 0, width, height,
-                 image,
-                 Color(1, 1, 1));
+                 image, Color::white);
 }
