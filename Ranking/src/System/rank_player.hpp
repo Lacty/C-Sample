@@ -15,11 +15,13 @@ public:
     while (cEnv::get()->isOpen()){
 
       m_score.update();
+      m_interface.update();
 
       //------•`‰æŠJŽn-------//
       cEnv::get()->begin();
 
       m_score.draw();
+      m_interface.draw();
 
       //------•`‰æI—¹------//
       cEnv::get()->end();
@@ -28,5 +30,6 @@ public:
 
 private:
 
-  cScore m_score;
+  cScore     m_score;
+  cInterface m_interface;
 };

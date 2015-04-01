@@ -1,6 +1,9 @@
 
 #pragma once
+#include <memory>
 
+
+class cInterfaceScore;
 
 class cInterface {
 public:
@@ -15,4 +18,5 @@ public:
 
 private:
 
+  std::shared_ptr<cInterfaceScore> m_score;
 };
