@@ -42,10 +42,20 @@ void cRanking::draw() {
   }
 }
 
-std::vector<short> cRanking::getRankScore() {
-  return rank_score;
+bool cRanking::isRankIn() {
+  for (int count = 0; count < RANKING_MAX; ++count) {
+    if (rank_score.at(count) == m_score->getMyScore()) {
+      // RankIN‚µ‚Ä‚¢‚½‚çtrue‚ð•Ô‚·
+      return true;
+    }
+  }
+  return false;
 }
 
-int cRanking::getRankingMax() {
-  return RANKING_MAX;
+int cRanking::getMyRank() {
+  for (int count = 0; count < RANKING_MAX; ++count) {
+    if (rank_score.at(count) == m_score->getMyScore()) {
+      return count;
+    }
+  }
 }

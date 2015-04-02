@@ -16,7 +16,6 @@ public:
     while (cEnv::get()->isOpen()){
 
       m_score.update();
-      m_interface.update();
 
       //------•`‰æŠJn-------//
       cEnv::get()->begin();

@@ -19,11 +19,11 @@ public:
   void update();
   void draw();
 
-  short getRandom() const;
-  short getMyScore() const;
-  std::vector<short> getRankScore() const;
-  int getRankingMax() const;
-  bool  isUpdate() const;
+  short getRandom()     const;
+  short getMyScore()    const;
+  bool  isRankIn()      const;
+  bool  isUpdate()      const;
+  int   getMyRank()     const;
 
   void dispScore(const short& score, int, int) const;
 

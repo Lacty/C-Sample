@@ -12,8 +12,8 @@ public:
   void update();
   void draw();
 
-  std::vector<short> getRankScore();
-  int getRankingMax();
+  bool isRankIn();
+  int getMyRank();
 
 
 private:

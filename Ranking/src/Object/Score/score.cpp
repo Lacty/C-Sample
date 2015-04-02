@@ -38,16 +38,16 @@ short cScore::getMyScore() const {
   return m_my_score->getMyScore();
 }
 
-std::vector<short> cScore::getRankScore() const {
-  return m_ranking->getRankScore();
-}
-
-int cScore::getRankingMax() const {
-  return m_ranking->getRankingMax();
-}
-
 bool cScore::isUpdate() const {
   return m_my_score->isUpdate();
+}
+
+bool cScore::isRankIn() const {
+  return m_ranking->isRankIn();
+}
+
+int cScore::getMyRank() const {
+  return m_ranking->getMyRank();
 }
 
 void cScore::dispScore(const short& score, int Pos_x, int Pos_y) const {

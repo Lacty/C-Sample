@@ -4,6 +4,7 @@
 
 
 class cInterfaceScore;
+class cHere;
 
 class cInterface {
 public:
@@ -12,11 +13,11 @@ public:
 
   void init();
 
-  void update();
   void draw();
 
 
 private:
 
   std::shared_ptr<cInterfaceScore> m_score;
+  std::shared_ptr<cHere>           m_here;
 };
