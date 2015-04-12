@@ -16,7 +16,7 @@ void drawMap(const int& map_num,
   case 0:
   {
     drawBox(map_x * chip_size - (WIDTH * 0.5f),
-            map_y * chip_size - (HEIGHT * 0.5f),
+            -map_y * chip_size + (HEIGHT * 0.5f) - chip_size,
             chip_size, chip_size,
             2,
             Color::white);
@@ -25,7 +25,7 @@ void drawMap(const int& map_num,
   case 1:
   {
     drawBox(map_x * chip_size - (WIDTH * 0.5f),
-            map_y * chip_size - (HEIGHT * 0.5f),
+            -map_y * chip_size + (HEIGHT * 0.5f) - chip_size,
             chip_size, chip_size,
             2,
             Color::gray);
@@ -34,7 +34,7 @@ void drawMap(const int& map_num,
   case 2:
   {
     drawBox(map_x * chip_size - (WIDTH * 0.5f),
-            map_y * chip_size - (HEIGHT * 0.5f),
+            -map_y * chip_size + (HEIGHT * 0.5f) - chip_size,
             chip_size, chip_size,
             2,
             Color::green);
@@ -43,7 +43,7 @@ void drawMap(const int& map_num,
   case 3:
   {
     drawBox(map_x * chip_size - (WIDTH * 0.5f),
-            map_y * chip_size - (HEIGHT * 0.5f),
+            -map_y * chip_size + (HEIGHT * 0.5f) - chip_size,
             chip_size, chip_size,
             2,
             Color::cyan);
@@ -52,7 +52,7 @@ void drawMap(const int& map_num,
   case 4:
   {
     drawBox(map_x * chip_size - (WIDTH * 0.5f),
-            map_y * chip_size - (HEIGHT * 0.5f),
+            -map_y * chip_size + (HEIGHT * 0.5f) - chip_size,
             chip_size, chip_size,
             2,
             Color::lime);
