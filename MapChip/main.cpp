@@ -15,30 +15,11 @@ void drawMap(const int& map_num,
   Color color;
 
   switch (map_num){
-  case 0:
-  {
-    color = Color::white;
-  }break;
-
-  case 1:
-  {
-    color = Color::gray;
-  }break;
-
-  case 2:
-  {
-    color = Color::green;
-  }break;
-
-  case 3:
-  {
-    color = Color::cyan;
-  }break;
-
-  case 4:
-  {
-    color = Color::lime;
-  }break;
+  case 0: { color = Color::white; }break;
+  case 1: { color = Color::gray;  }break;
+  case 2: { color = Color::green; }break;
+  case 3: { color = Color::cyan;  }break;
+  case 4: { color = Color::lime;  }break;
   }
 
   drawBox(map_x * chip_size - (WIDTH * 0.5f),
