@@ -12,52 +12,40 @@ void drawMap(const int& map_num,
              const int& map_x,
              const int& chip_size)
 {
+  Color color;
+
   switch (map_num){
   case 0:
   {
-    drawBox(map_x * chip_size - (WIDTH * 0.5f),
-            -map_y * chip_size + (HEIGHT * 0.5f) - chip_size,
-            chip_size, chip_size,
-            2,
-            Color::white);
+    color = Color::white;
   }break;
 
   case 1:
   {
-    drawBox(map_x * chip_size - (WIDTH * 0.5f),
-            -map_y * chip_size + (HEIGHT * 0.5f) - chip_size,
-            chip_size, chip_size,
-            2,
-            Color::gray);
+    color = Color::gray;
   }break;
 
   case 2:
   {
-    drawBox(map_x * chip_size - (WIDTH * 0.5f),
-            -map_y * chip_size + (HEIGHT * 0.5f) - chip_size,
-            chip_size, chip_size,
-            2,
-            Color::green);
+    color = Color::green;
   }break;
 
   case 3:
   {
-    drawBox(map_x * chip_size - (WIDTH * 0.5f),
-            -map_y * chip_size + (HEIGHT * 0.5f) - chip_size,
-            chip_size, chip_size,
-            2,
-            Color::cyan);
+    color = Color::cyan;
   }break;
 
   case 4:
   {
-    drawBox(map_x * chip_size - (WIDTH * 0.5f),
-            -map_y * chip_size + (HEIGHT * 0.5f) - chip_size,
-            chip_size, chip_size,
-            2,
-            Color::lime);
+    color = Color::lime;
   }break;
   }
+
+  drawBox(map_x * chip_size - (WIDTH * 0.5f),
+         -map_y * chip_size + (HEIGHT * 0.5f) - chip_size,
+          chip_size, chip_size,
+          2,
+          color);
 }
 
 int main() {
