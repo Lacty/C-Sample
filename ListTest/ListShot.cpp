@@ -7,7 +7,7 @@
 #include <list>
 
 enum WindowSize {
-  WIDTH  = 512,
+  WIDTH = 512,
   HEIGHT = 512,
 };
 
@@ -15,10 +15,9 @@ enum ShotStatus {
   Init_Pos_X = 0,
   Init_Pos_Y = -200,
 
-  Shot_Max   = 5,
   Shot_Speed = 20,
 
-  Active   = 1,
+  Active = 1,
   Inactive = 0,
 
   Radius = 5,
@@ -34,30 +33,19 @@ int main() {
     ShotStatus status;
     Vec2f      pos;
 
-    Shot(ShotStatus stat, Vec2f position) :
+    Shot(const ShotStatus& stat, const Vec2f& position) :
     status(stat),
     pos(position){}
   };
 
   std::list<Shot> shots;
-  
-  // 初期化処理
-  for (int i = 0; i < Shot_Max; ++i) {
-    shots.emplace_back(Inactive, Vec2f(Init_Pos_X, Init_Pos_Y));
-  }
 
   while (env.isOpen()) {
     // 生成処理
     if (env.isPushButton(Mouse::LEFT)) {
-      for (auto &it : shots) {
-        if (it.status == Inactive) {
-          it.status = Active;
-          it.pos    = Vec2f(Init_Pos_X, Init_Pos_Y);
-          break;
-        }
-      }
+      shots.push_back({ Active, Vec2f(Init_Pos_X, Init_Pos_Y) });
     }
-    
+
     // 発射処理
     for (auto &it : shots) {
       if (it.status == Active) {
@@ -66,10 +54,12 @@ int main() {
     }
 
     // 画面外に出たら消す処理
-    for (auto &it : shots) {
-      if (it.pos.y() >= Kill_Line) {
-        it.status = Inactive;
+    auto &it = shots.begin();
+    while (it != shots.end()) {
+      if (it->pos.y() >= Kill_Line) {
+        it = shots.erase(it);
       }
+      else it++;
     }
 
     env.begin();
